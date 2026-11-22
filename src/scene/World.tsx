@@ -44,6 +44,7 @@ import {
 } from "./Props";
 import { Traveler, journeyPose, type Playback } from "./Avatar";
 import type { Journey } from "../domain/types";
+import { JourneyAtmosphere, RecordedMilestones } from "./JourneyAtmosphere";
 const Terrain = memo(function Terrain() {
   const top = useMemo(islandGeometry, []),
     cliff = useMemo(cliffGeometry, []),
@@ -87,7 +88,7 @@ const Decoration = memo(function Decoration() {
     for (let i = 0; i < 610; i++) {
       const x = (random() - 0.5) * 12,
         z = (random() - 0.5) * 27;
-      if ((x * x) / 38 + (z * z) / 190 > 0.9 || distanceFromTrail(x, z) < 1.02)
+      if ((x * x) / 38 + (z * z) / 190 > 0.9 || distanceFromTrail(x, z) < 1.6)
         continue;
       if (
         Math.hypot(x + 4.5, (z - 5) * 0.7) < 1.7 ||
@@ -147,8 +148,8 @@ const Decoration = memo(function Decoration() {
         );
       })}
       <Cottage
-        position={[3.7, groundHeight(3.7, 7.1), 7.1]}
-        scale={1.25}
+        position={[4.2, groundHeight(4.2, 5.5), 5.5]}
+        scale={1.0}
         rotation={-0.5}
       />
       <Cottage
@@ -621,32 +622,14 @@ function World({
         far={120}
       />
       <color attach="background" args={["#eef0ed"]} />
-      <hemisphereLight args={["#fffaed", "#9aa89c", 1.15]} />
-      <directionalLight
-        position={[-8, 20, 10]}
-        color="#fff2db"
-        intensity={2.3}
-        castShadow
-        shadow-mapSize={[2048, 2048]}
-        shadow-camera-left={-20}
-        shadow-camera-right={20}
-        shadow-camera-top={20}
-        shadow-camera-bottom={-20}
-        shadow-camera-far={65}
-        shadow-normalBias={0.035}
-        shadow-bias={-0.0002}
-      />
-      <directionalLight
-        position={[10, 8, -8]}
-        color="#c0d7e3"
-        intensity={0.7}
-      />
+      <JourneyAtmosphere journey={journey} playback={playback} />
       <Suspense fallback={null}>
         <Terrain />
         <StaticBatch>
           <Decoration />
         </StaticBatch>
         <Traveler journey={journey} playback={playback} />
+        <RecordedMilestones journey={journey} playback={playback} />
         {photo && (
           <PhotoThought
             key={photo}

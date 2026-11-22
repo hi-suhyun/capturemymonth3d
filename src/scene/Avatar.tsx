@@ -5,6 +5,8 @@ import * as THREE from "three";
 import type { Journey, SceneAction } from "../domain/types";
 import { pointAt, tangentAt } from "./landscape";
 import { Desk, Dumbbell, YogaMat } from "./Props";
+import { Bench, Airplane } from "./ActivityProps";
+import { activityEnvelope } from "../domain/journey";
 export interface Playback {
   time: number;
   playing: boolean;
@@ -185,6 +187,14 @@ export function Traveler({
   const root = useRef<THREE.Group>(null),
     body = useRef<THREE.Group>(null),
     desk = useRef<THREE.Group>(null),
+    laptop = useRef<THREE.Group>(null),
+    book = useRef<THREE.Group>(null),
+    pencil = useRef<THREE.Mesh>(null),
+    bench = useRef<THREE.Group>(null),
+    plane = useRef<THREE.Group>(null),
+    propeller = useRef<THREE.Group>(null),
+    head = useRef<THREE.Group>(null),
+    knees = useRef<THREE.Group[]>([]),
     arms = useRef<THREE.Group[]>([]),
     legs = useRef<THREE.Group[]>([]),
     dumbbells = useRef<THREE.Group[]>([]),
@@ -193,9 +203,17 @@ export function Traveler({
   useFrame(() => {
     const time = playback.current.time;
     const pose = journeyPose(journey, time);
+    const activity = activityEnvelope(pose.chapter, time);
+    const sitting = pose.action === "sitting" ? activity : 0;
+    const stargazing = pose.action === "stargazing" ? activity : 0;
+    const flying = pose.action === "flying" ? activity : 0;
+    const flightPhase = pose.chapter ? THREE.MathUtils.clamp((time - pose.chapter.arrival) / (pose.chapter.end - pose.chapter.arrival), 0, 1) : 0;
     const p = pointAt(pose.position),
       dir = tangentAt(pose.position);
     if (root.current) {
+      // Move to the verge for a stop, keeping the trail free and the camera nearby.
+      p.add(new THREE.Vector3(dir.z, 0, -dir.x).multiplyScalar((sitting + stargazing) * .72));
+      p.y += flying * Math.sin(flightPhase * Math.PI) * .85;
       root.current.position.copy(p);
       const angle = Math.atan2(dir.x, dir.z);
       smoothAngle.current +=
@@ -221,13 +239,18 @@ export function Traveler({
         ? Math.abs(Math.sin(time * (jogging ? 9 : 11))) *
           (jogging ? 0.045 : 0.03)
         : Math.sin(time * 2) * 0.008;
-      body.current.rotation.x = work ? -0.08 : 0;
+      body.current.position.y += -.04 * sitting + .28 * flying;
+      body.current.rotation.x = work ? -0.08 : -.08 * stargazing;
+      if (head.current) head.current.rotation.x = -.45 * stargazing;
       body.current.rotation.z = yoga ? Math.sin(time * 1.5) * 0.025 : 0;
     }
     const lift = 0.9 + Math.sin(time * 3.2) * 0.32;
     arms.current.forEach((a, i) => {
       if (!a) return;
-      if (work) {
+      if (sitting > 0 || flying > 0) {
+        a.rotation.x = -.65 * Math.max(sitting, flying);
+        a.rotation.z = (i ? 1 : -1) * .12;
+      } else if (work) {
         a.rotation.x = -0.9 + Math.sin(time * 6 + i) * 0.04;
         a.rotation.z = 0;
       } else if (lifting) {
@@ -254,7 +277,13 @@ export function Traveler({
       if (weight) weight.visible = lifting;
     });
     legs.current.forEach((l, i) => {
-      if (yoga) {
+      l.visible = flying < .5;
+      l.position.y = .45 - .04 * sitting;
+      if (knees.current[i]) knees.current[i].rotation.x = sitting * Math.PI / 2;
+      if (sitting > 0) {
+        l.rotation.x = -sitting * Math.PI / 2;
+        l.rotation.z = 0;
+      } else if (yoga) {
         l.rotation.x = i === 1 ? -0.08 : 0;
         l.rotation.z =
           i === 1 ? 0.5 + Math.sin(time * 1.8) * 0.035 : 0;
@@ -265,6 +294,21 @@ export function Traveler({
     });
     if (yogaMat.current) yogaMat.current.visible = yoga;
     if (desk.current) desk.current.visible = work;
+    if (laptop.current) laptop.current.visible = work && pose.action === "typing";
+    if (book.current) book.current.visible = work && pose.action === "reading";
+    if (pencil.current) {
+      pencil.current.visible = work && pose.action === "writing";
+      pencil.current.position.x = .13 + Math.sin(time * 6) * .045;
+    }
+    if (bench.current) {
+      bench.current.visible = sitting > .001;
+      bench.current.scale.setScalar(Math.max(.001, sitting));
+    }
+    if (plane.current) {
+      plane.current.visible = flying > .001;
+      plane.current.scale.setScalar(Math.max(.001, flying));
+    }
+    if (propeller.current) propeller.current.rotation.z = time * 45;
   });
   return (
     <group ref={root} scale={0.92}>
@@ -287,22 +331,30 @@ export function Traveler({
         >
           <meshStandardMaterial color="#d99a4f" roughness={0.78} />
         </RoundedBox>
-        <mesh position={[0, 0.96, 0]} castShadow>
+        <group ref={head} position={[0, .96, 0]}>
+        <mesh position={[0, 0, 0]} castShadow>
           <sphereGeometry args={[0.19, 24, 16]} />
           <meshStandardMaterial color="#deb99a" roughness={0.84} />
         </mesh>
-        <mesh position={[0, 1.065, -0.012]} scale={[1, 0.78, 1]} castShadow>
+        <mesh position={[0, .105, -0.012]} scale={[1, 0.78, 1]} castShadow>
           <sphereGeometry args={[0.202, 24, 16]} />
           <meshStandardMaterial color="#e8e6d4" roughness={0.96} />
         </mesh>
-        <mesh position={[0, 1.19, -0.01]} castShadow>
+        <mesh position={[0, .23, -0.01]} castShadow>
           <sphereGeometry args={[0.066, 14, 10]} />
           <meshStandardMaterial color="#efece0" />
         </mesh>
-        <mesh position={[0, 1.03, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh position={[0, .07, 0]} rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.185, 0.033, 8, 24]} />
           <meshStandardMaterial color="#d4d3bd" />
         </mesh>
+        {[-1, 1].map((s) => (
+          <mesh key={s} position={[s * 0.063, 0, 0.177]}>
+            <sphereGeometry args={[0.014, 10, 8]} />
+            <meshStandardMaterial color="#44463d" />
+          </mesh>
+        ))}
+        </group>
         <mesh position={[0, 0.85, 0.015]} rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.135, 0.055, 8, 20]} />
           <meshStandardMaterial color="#a45e45" />
@@ -359,12 +411,7 @@ export function Traveler({
         >
           <meshStandardMaterial color="#ac8561" />
         </RoundedBox>
-        {[-1, 1].map((s) => (
-          <mesh key={s} position={[s * 0.063, 0.96, 0.177]}>
-            <sphereGeometry args={[0.014, 10, 8]} />
-            <meshStandardMaterial color="#44463d" />
-          </mesh>
-        ))}
+
       </group>
       {[-1, 1].map((s, i) => (
         <group
@@ -374,26 +421,52 @@ export function Traveler({
           }}
           position={[s * 0.105, 0.45, 0]}
         >
-          <mesh position={[0, -0.14, 0]} castShadow>
-            <capsuleGeometry args={[0.078, 0.19, 5, 12]} />
+          <mesh position={[0, -.08, 0]} castShadow>
+            <capsuleGeometry args={[.078, .06, 5, 12]} />
             <meshStandardMaterial color="#435a50" />
           </mesh>
-          <RoundedBox
-            args={[0.17, 0.11, 0.24]}
-            radius={0.045}
-            smoothness={3}
-            position={[0, -0.32, 0.04]}
-            castShadow
-          >
-            <meshStandardMaterial color="#665140" />
-          </RoundedBox>
+          <group position={[0, -.16, 0]} ref={el => { if (el) knees.current[i] = el; }}>
+            <mesh position={[0, -.065, 0]} castShadow>
+              <capsuleGeometry args={[.075, .06, 5, 12]} /><meshStandardMaterial color="#435a50" />
+            </mesh>
+            <RoundedBox args={[.17, .11, .24]} radius={.045} smoothness={3} position={[0, -.16, .04]} castShadow>
+              <meshStandardMaterial color="#665140" />
+            </RoundedBox>
+          </group>
         </group>
       ))}
+      <group ref={bench} visible={false}>
+        <Bench />
+        <group position={[.85, 0, .12]} rotation={[0, -.45, 0]} scale={.9}>
+          <LittlePerson action="waving" color="#819aab" />
+        </group>
+      </group>
+      <group ref={plane} visible={false}>
+        <Airplane />
+        <group ref={propeller} position={[0, .43, 1.13]}>
+          <mesh><boxGeometry args={[.07, .76, .035]} /><meshStandardMaterial color="#68594a" /></mesh>
+        </group>
+      </group>
       <group ref={yogaMat} visible={false}>
         <YogaMat position={[0, 0, 0.04]} />
       </group>
       <group ref={desk} visible={false}>
-        <Desk position={[0, 0, 0.58]} rotation={Math.PI} laptop />
+        <Desk position={[0, 0, 0.58]} rotation={Math.PI} />
+        <group ref={laptop} visible={false}>
+          <mesh position={[0, .69, .69]} rotation={[.2, 0, 0]}>
+            <boxGeometry args={[.38, .28, .025]} />
+            <meshStandardMaterial color="#526d6d" emissive="#749998" emissiveIntensity={.5} />
+          </mesh>
+        </group>
+        <group ref={book} position={[0, .55, .57]} visible={false}>
+          {[-1, 1].map(side => <group key={side} position={[side * .095, 0, 0]} rotation={[0, 0, side * .15]}>
+            <mesh><boxGeometry args={[.19, .04, .25]} /><meshStandardMaterial color="#6e8b91" /></mesh>
+            <mesh position={[0, .027, 0]}><boxGeometry args={[.17, .025, .23]} /><meshStandardMaterial color="#fff0ce" /></mesh>
+          </group>)}
+        </group>
+        <mesh ref={pencil} visible={false} position={[.13, .63, .48]} rotation={[-.5, 0, -.3]}>
+          <cylinderGeometry args={[.012, .008, .22, 6]} /><meshStandardMaterial color="#d69d3d" />
+        </mesh>
       </group>
     </group>
   );

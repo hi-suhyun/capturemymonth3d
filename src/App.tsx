@@ -1,3 +1,4 @@
+import JourneyProgress from "./components/JourneyProgress";
 import {
   Component,
   lazy,
@@ -50,6 +51,7 @@ import {
 } from "./domain/journey";
 import {
   CATEGORY_META,
+  ACTIVITY_LABEL,
   type MonthData,
   type Category,
   type CalendarEvent,
@@ -82,7 +84,7 @@ const prettyMonth = (month: string) =>
     year: "numeric",
   });
 const durationLabel = (seconds: number) =>
-  `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, "0")}`;
+  `${Math.floor(Math.round(seconds) / 60)}:${String(Math.round(seconds) % 60).padStart(2, "0")}`;
 class SceneBoundary extends Component<
   { children: ReactNode },
   { failed: boolean }
@@ -835,7 +837,7 @@ export default function App() {
               Change month
             </button>
           </div>
-          <div className="event-editor">
+          <div className="event-editor" role="region" aria-label="Your milestones" tabIndex={0}>
             <div className="editor-top">
               <strong>Your milestones</strong>
               <span>{data.events.length} in this calendar</span>
@@ -1018,9 +1020,12 @@ export default function App() {
               : progress < 5
                 ? "FINDING YOUR FIRST STEP"
                 : current
-                  ? CATEGORY_META[current.category].label.toUpperCase()
+                  ? chapter && progress >= chapter.arrival && progress < chapter.end
+                    ? ACTIVITY_LABEL[chapter.action].toUpperCase()
+                    : CATEGORY_META[current.category].label.toUpperCase()
                   : "ONE MONTH, MANY MOMENTS"}
           </div>
+          <JourneyProgress journey={journey} time={progress} />
           <div className="journey-tools">
             <button
               className={`icon-button ${overview ? "is-on" : ""}`}
@@ -1297,7 +1302,9 @@ export default function App() {
                     </span>
                     <span>0{i + 1}</span>
                   </div>
-                  <div className="miniature">
+                  <div
+                    className={`miniature ${card.scene === "stargazing" ? "miniature-stargazing" : ""}`}
+                  >
                     <MemoryMiniature scene={card.scene} />
                   </div>
                   <div className="memory-info">

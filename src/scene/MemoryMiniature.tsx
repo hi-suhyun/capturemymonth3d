@@ -1,6 +1,6 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import * as THREE from "three";
 import {
   Desk,
@@ -306,6 +306,19 @@ function Mini({
     </group>
   );
 }
+/** Shared framing keeps every journal miniature at the same scale and center. */
+function MiniatureFraming() {
+  const { camera, size } = useThree();
+  useLayoutEffect(() => {
+    const orthographic = camera as THREE.OrthographicCamera;
+    camera.position.set(4, 4.2, 6);
+    camera.lookAt(0, 0.9, 0);
+    orthographic.zoom = Math.min(51, size.width / 4.2, size.height / 4.1);
+    orthographic.updateProjectionMatrix();
+  }, [camera, size.width, size.height]);
+  return null;
+}
+
 export default function MemoryMiniature({
   scene,
 }: {
@@ -322,7 +335,7 @@ export default function MemoryMiniature({
       shadows
       dpr={[1, 1.5]}
       orthographic
-      camera={{ position: [4, 3.3, 6], zoom: scene === "stargazing" ? 51 : 59 }}
+      camera={{ position: [4, 4.2, 6], zoom: 51 }}
       gl={{ alpha: true, antialias: true }}
     >
       <ambientLight intensity={scene === "stargazing" ? 0.95 : 1.7} />
@@ -337,6 +350,7 @@ export default function MemoryMiniature({
         color="#c8dde5"
         intensity={scene === "stargazing" ? 0.45 : 1}
       />
+      <MiniatureFraming />
       <Mini scene={scene} />
     </Canvas>
   );

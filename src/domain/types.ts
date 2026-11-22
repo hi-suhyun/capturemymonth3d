@@ -9,6 +9,9 @@ export type Category =
   | "anniversary"
   | "other";
 export type SceneAction =
+  | "sitting"
+  | "flying"
+  | "stargazing"
   | "reading"
   | "writing"
   | "waving"
@@ -96,4 +99,20 @@ export const CATEGORY_META: Record<
     action: "celebrating",
   },
   other: { label: "A moment", color: "#8a9590", action: "looking" },
+};
+
+export const ACTIVITY_LABEL: Record<SceneAction, string> = {
+  reading: "A little time to learn",
+  writing: "Putting in the work",
+  typing: "Building something new",
+  sitting: "Time with your people",
+  flying: "A little further from home",
+  stargazing: "A moment under the stars",
+  waving: "A familiar face",
+  stretching: "Making time to move",
+  jogging: "One stride at a time",
+  lifting: "Growing stronger",
+  yoga: "Finding your balance",
+  celebrating: "A moment worth keeping",
+  looking: "Taking it all in",
 };

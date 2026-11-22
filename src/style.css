@@ -652,7 +652,14 @@ button:hover {
   border: 1px solid white;
   border-radius: 17px;
   box-shadow: 0 22px 80px #33472f15;
+  height: calc(100svh - 200px);
   max-height: calc(100svh - 180px);
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+}
+.review-intro {
+  min-height: 0;
+  overflow-y: auto;
 }
 .review-intro h2 {
   font:
@@ -721,6 +728,8 @@ button:hover {
 .event-editor {
   min-height: 0;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
   padding-right: 8px;
   scrollbar-width: thin;
   scrollbar-color: #d0dcc5 transparent;
@@ -1301,8 +1310,11 @@ button:hover {
   color: #b09588;
 }
 .miniature {
-  height: 178px;
+  height: 196px;
   margin: 0 -12px;
+}
+.miniature-stargazing {
+  height: 196px;
 }
 .memory-info {
   padding-bottom: 17px;
@@ -1561,7 +1573,10 @@ button:hover {
     min-height: 380px;
   }
   .miniature {
-    height: 200px;
+    height: 218px;
+  }
+  .miniature-stargazing {
+    height: 218px;
   }
 }
 @media (max-width: 1200px) {
@@ -1727,7 +1742,10 @@ button:hover {
     letter-spacing: 1px;
   }
   .miniature {
-    height: 155px;
+    height: 170px;
+  }
+  .miniature-stargazing {
+    height: 170px;
   }
   .memory-info h3 {
     font-size: 20px;
@@ -1892,7 +1910,9 @@ button:hover {
     width: calc(100% - 32px);
     margin: 18px 16px 50px;
     padding: 24px;
+    height: auto;
     max-height: none;
+    overflow: visible;
     gap: 25px;
   }
   .review-intro h2 {
@@ -1912,8 +1932,13 @@ button:hover {
   .mode-toggle {
     margin-top: 17px;
   }
+  .review-intro {
+    overflow: visible;
+  }
   .event-editor {
+    height: min(55svh, 400px);
     max-height: 400px;
+    flex-shrink: 0;
   }
   .editor-top {
     font-size: 13px;
@@ -2110,7 +2135,10 @@ button:hover {
     letter-spacing: 1.5px;
   }
   .miniature {
-    height: 180px;
+    height: 198px;
+  }
+  .miniature-stargazing {
+    height: 198px;
   }
   .memory-info h3 {
     font-size: 25px;
@@ -2522,3 +2550,22 @@ button:hover {
     font-size: 13px;
   }
 }
+
+/* A clock-driven, reversible view of the month and its category milestones. */
+.journey-progress{position:absolute;right:38px;top:181px;z-index:2;width:370px;padding:20px 20px 13px;background:#f9fbf4ed;border:1px solid #fff;border-radius:14px;box-shadow:0 8px 35px #33472f0d;backdrop-filter:blur(10px)}
+.journey-progress-date{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dce5d1;padding-bottom:15px;margin-bottom:16px;gap:10px}
+.journey-progress-kicker{font-size:10px;letter-spacing:1.4px;color:#839076;font-weight:600}.journey-progress-date h2{font:400 28px/1.2 Georgia,serif;margin-top:7px}.journey-progress-date h2>span{font:400 12px 'DM Sans',sans-serif;color:#8a967f;margin-left:9px}.journey-progress-day{display:flex;flex-direction:column;align-items:center;color:#8c9a7c;font-size:9px;letter-spacing:1px}.journey-progress-day b{font:400 29px/1.15 Georgia,serif;color:#52694a}.journey-progress-day>span{font-size:8px;margin-top:3px}
+.journey-progress-columns{display:flex;gap:7px}.journey-progress-column{min-width:0;flex:1;text-align:center}.journey-progress-count{font-size:12px;color:#607457;font-variant-numeric:tabular-nums}.journey-progress-count>span{font-size:10px;color:#a2ad97}.journey-progress-track{height:83px;position:relative;margin:7px auto 8px;max-width:25px;background:#e6ecdf;border-radius:5px;overflow:hidden}.journey-progress-fill{position:absolute;inset:0;transform-origin:center bottom;border-radius:5px;transition:transform .18s linear}.journey-progress-category{display:block;font-size:9px;color:#7c8b6f;writing-mode:vertical-rl;transform:rotate(180deg);height:57px;text-align:left;margin:auto;letter-spacing:.2px}.journey-progress>p{font-size:10px;color:#a1ac95;margin-top:13px;text-align:center}
+@media(max-width:1100px){.journey-progress{width:310px;right:20px;top:158px;padding:16px}.journey-progress-date h2{font-size:24px}.journey-progress-columns{gap:5px}.journey-progress-track{height:66px}}
+@media(max-width:650px){.journey-progress{top:330px;right:14px;width:216px;padding:12px;pointer-events:none;background:#f9fbf4dd}.journey-progress-kicker{font-size:8px;letter-spacing:.7px}.journey-progress-date{padding-bottom:8px;margin-bottom:9px}.journey-progress-date h2{font-size:21px}.journey-progress-date h2>span{display:none}.journey-progress-day b{font-size:23px}.journey-progress-columns{gap:4px}.journey-progress-count{font-size:10px}.journey-progress-count>span{font-size:8px}.journey-progress-track{height:38px;max-width:15px;margin:5px auto}.journey-progress-category{font-size:8px;height:48px}.journey-progress>p{display:none}.preview-finish{z-index:3}}
+@media(prefers-reduced-motion:reduce){.journey-progress-fill{transition:none}}
+
+/* Category volumes share a baseline and use a bounded linear height scale. */
+.journey-progress{--bar-min:32px;--bar-max:100px;--bar-unit:3px;background:rgba(249,251,244,.58);border-color:rgba(255,255,255,.65);backdrop-filter:blur(2px)}
+.journey-progress-bar-space{height:var(--bar-max);display:flex;align-items:flex-end;margin:7px 0 8px}
+.journey-progress-track{width:100%;margin:0 auto;background:rgba(210,221,198,.5);flex-shrink:0}
+.journey-progress-date{border-bottom-color:rgba(178,195,163,.45)}
+.journey-progress-kicker,.journey-progress-category{color:#56694d}
+.journey-progress-count>span,.journey-progress>p{color:#718165}
+@media(max-width:1100px){.journey-progress{--bar-min:27px;--bar-max:80px;--bar-unit:2.4px}}
+@media(max-width:650px){.journey-progress{--bar-min:20px;--bar-max:48px;--bar-unit:1.45px;background:rgba(249,251,244,.58)}.journey-progress-bar-space{margin:5px 0}.journey-progress-track{margin:0 auto}}

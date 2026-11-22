@@ -7,7 +7,11 @@ import {
   type SceneAction,
 } from "./types";
 
-function actionForEvent(event: MonthData["events"][number]): SceneAction {
+export function actionForEvent(event: MonthData["events"][number]): SceneAction {
+  const text = `${event.title} ${event.location}`;
+  if (/stargaz|astronomy|meteor shower|별\s*보기|천체/i.test(text)) return "stargazing";
+  if (event.category === "travel" && /flight|flying|airport|chicago|비행|공항/i.test(text)) return "flying";
+  if (event.category === "social") return "sitting";
   if (event.category === "fitness") {
     if (/\byoga\b/i.test(event.title)) return "yoga";
     if (/\b(run(?:ning)?|jog(?:ging)?)\b/i.test(event.title))
@@ -34,21 +38,12 @@ export function createJourney(
   const chapters = events.map((event, index) => {
     const action = actionForEvent(event);
     const intro = options.cinematicIntro && index === 0;
-    const length = intro ? 6.5 :
-      mode === "highlights"
-        ? 4.4
-        : event.highlight
-          ? 1.5
-          : 1;
-    const fitnessAnimation = ["jogging", "lifting", "yoga"].includes(action);
-    const walkDuration = intro ? 1.8 :
-      mode === "highlights"
-        ? 2.4
-        : event.highlight
-          ? length * 0.75
-          : fitnessAnimation
-            ? length * 0.65
-            : length;
+    // Preserve every record; allocate enough time to actually perform its activity.
+    const special = action === "stargazing" || action === "flying";
+    const routine = event.category === "study" || event.category === "assignment" || event.category === "other";
+    const length = intro ? 6.5 : special ? 4.2 : mode === "highlights" || event.highlight
+      ? 3.2 : routine ? 1.5 : 2.6;
+    const walkDuration = intro ? 1.8 : special ? 0.9 : routine && mode === "full" && !event.highlight ? 0.5 : 0.8;
     const sameDay = events.filter((e) => e.day === event.day);
     const offset =
       sameDay.findIndex((e) => e.id === event.id) / Math.max(1, sameDay.length);
@@ -204,4 +199,12 @@ export function createCollection(month: MonthData): MemoryCard[] {
     cards.push(toCard(event, kind, cardScene, subtitle, metric));
   }
   return cards;
+}
+
+/** Activity weight is derived from the playback time, including enter/leave transitions. */
+export function activityEnvelope(chapter: Journey["chapters"][number] | undefined, time: number) {
+  if (!chapter || time < chapter.arrival || time >= chapter.end) return 0;
+  const smooth = (value: number) => { const u = Math.max(0, Math.min(1, value)); return u * u * (3 - 2 * u); };
+  const ramp = Math.min(0.45, (chapter.end - chapter.arrival) / 3);
+  return smooth((time - chapter.arrival) / ramp) * smooth((chapter.end - time) / ramp);
 }
