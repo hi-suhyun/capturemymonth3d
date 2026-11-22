@@ -6,6 +6,8 @@ import type { Journey, SceneAction } from "../domain/types";
 import { pointAt, tangentAt } from "./landscape";
 import { Desk, Dumbbell, YogaMat } from "./Props";
 import { Bench, Airplane } from "./ActivityProps";
+import { ExtraActivityProps } from "./ExtraActivityProps";
+import { isExtraAction, extraPose } from "../domain/activities";
 import { activityEnvelope } from "../domain/journey";
 export interface Playback {
   time: number;
@@ -212,7 +214,7 @@ export function Traveler({
       dir = tangentAt(pose.position);
     if (root.current) {
       // Move to the verge for a stop, keeping the trail free and the camera nearby.
-      p.add(new THREE.Vector3(dir.z, 0, -dir.x).multiplyScalar((sitting + stargazing) * .72));
+      p.add(new THREE.Vector3(dir.z, 0, -dir.x).multiplyScalar((sitting + stargazing) * .72 + (pose.action === "swimming" ? -activity * 1.5 : 0)));
       p.y += flying * Math.sin(flightPhase * Math.PI) * .85;
       root.current.position.copy(p);
       const angle = Math.atan2(dir.x, dir.z);
@@ -309,6 +311,21 @@ export function Traveler({
       plane.current.scale.setScalar(Math.max(.001, flying));
     }
     if (propeller.current) propeller.current.rotation.z = time * 45;
+    if (isExtraAction(pose.action) && !pose.walking && activity > 0) {
+      const extra = extraPose(pose.action, time);
+      if (body.current) {
+        body.current.position.y = extra.bodyY * activity;
+        body.current.rotation.x = extra.lean * activity;
+        body.current.rotation.z = extra.sway * activity;
+      }
+      if (head.current) head.current.rotation.x = extra.head * activity;
+      arms.current.forEach((arm, i) => {arm.rotation.x = extra.arms[i] * activity; arm.rotation.z = extra.spread[i] * activity;});
+      legs.current.forEach((leg, i) => {
+        leg.rotation.x = extra.legs[i] * activity;
+        leg.position.y = pose.action === "swimming" ? .45 - .13 * activity : .45 + extra.bodyY * activity;
+        if (knees.current[i]) knees.current[i].rotation.x = extra.knees[i] * activity;
+      });
+    }
   });
   return (
     <group ref={root} scale={0.92}>
@@ -435,6 +452,7 @@ export function Traveler({
           </group>
         </group>
       ))}
+      <ExtraActivityProps journey={journey} playback={playback} />
       <group ref={bench} visible={false}>
         <Bench />
         <group position={[.85, 0, .12]} rotation={[0, -.45, 0]} scale={.9}>

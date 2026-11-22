@@ -1,3 +1,4 @@
+import { matchExtraActivity, isExtraAction } from "./activities";
 import {
   CATEGORY_META,
   type Category,
@@ -8,6 +9,8 @@ import {
 } from "./types";
 
 export function actionForEvent(event: MonthData["events"][number]): SceneAction {
+  const extra = matchExtraActivity(event.title);
+  if (extra) return extra.action;
   const text = `${event.title} ${event.location}`;
   if (/stargaz|astronomy|meteor shower|별\s*보기|천체/i.test(text)) return "stargazing";
   if (event.category === "travel" && /flight|flying|airport|chicago|비행|공항/i.test(text)) return "flying";
@@ -40,7 +43,7 @@ export function createJourney(
     const intro = options.cinematicIntro && index === 0;
     // Preserve every record; allocate enough time to actually perform its activity.
     const special = action === "stargazing" || action === "flying";
-    const routine = event.category === "study" || event.category === "assignment" || event.category === "other";
+    const routine = !isExtraAction(action) && (event.category === "study" || event.category === "assignment" || event.category === "other");
     const length = intro ? 6.5 : special ? 4.2 : mode === "highlights" || event.highlight
       ? 3.2 : routine ? 1.5 : 2.6;
     const walkDuration = intro ? 1.8 : special ? 0.9 : routine && mode === "full" && !event.highlight ? 0.5 : 0.8;

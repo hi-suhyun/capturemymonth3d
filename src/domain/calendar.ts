@@ -1,3 +1,4 @@
+import { matchExtraActivity } from "./activities";
 import ICAL from "ical.js";
 import type { CalendarEvent, Category, MonthData } from "./types";
 
@@ -17,6 +18,8 @@ export function classify(title: string, categories: string[] = []): Category {
     .map((c) => c.toLowerCase())
     .find((c) => known.includes(c as Category));
   if (explicit) return explicit as Category;
+  const extra = matchExtraActivity(title);
+  if (extra) return extra.category;
   const text = title.toLowerCase();
   const rules: [Category, RegExp][] = [
     ["anniversary", /anniversary|birthday|기념일|생일/],

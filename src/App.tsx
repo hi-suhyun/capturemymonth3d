@@ -316,11 +316,12 @@ export default function App() {
     playback.current.playing = next;
     setPlaying(next);
   }
-  async function loadDemo(preview = false) {
+  async function loadDemo(preview = false, extended = false) {
     setPending(true);
     setError("");
     try {
-      const response = await fetch("/demo-november-2026.ics");
+      const sampleFile = extended ? "demo-activities-2026.ics" : "demo-november-2026.ics";
+      const response = await fetch(`/${sampleFile}`);
       if (!response.ok)
         throw new Error("The sample calendar could not be loaded.");
       const text = await response.text();
@@ -329,7 +330,7 @@ export default function App() {
       setData(parsed);
       setMonth("2026-11");
       setTimezone("America/Los_Angeles");
-      setFilename("demo-november-2026.ics");
+      setFilename(sampleFile);
       setDemo(true);
       reset();
       setCinematicIntro(preview);
@@ -601,6 +602,9 @@ export default function App() {
                 <Play size={13} fill="currentColor" />
               </span>
               Watch the 10-second scene
+            </button>
+            <button className="text-button" onClick={() => void loadDemo(false, true)} disabled={pending}>
+              Explore 15 more activities <ArrowUpRight size={14} />
             </button>
             <div className="hero-note">
               <span className="tiny-rule" />

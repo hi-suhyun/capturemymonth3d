@@ -1,3 +1,4 @@
+import { EXTRA_ACTIVITIES, type ExtraAction } from "./activities";
 export type Category =
   | "study"
   | "assignment"
@@ -8,7 +9,7 @@ export type Category =
   | "hackathon"
   | "anniversary"
   | "other";
-export type SceneAction =
+export type SceneAction = ExtraAction
   | "sitting"
   | "flying"
   | "stargazing"
@@ -102,6 +103,7 @@ export const CATEGORY_META: Record<
 };
 
 export const ACTIVITY_LABEL: Record<SceneAction, string> = {
+  ...Object.fromEntries(EXTRA_ACTIVITIES.map(a => [a.action, a.label])) as Record<ExtraAction, string>,
   reading: "A little time to learn",
   writing: "Putting in the work",
   typing: "Building something new",
