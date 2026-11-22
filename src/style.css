@@ -1390,6 +1390,15 @@ button:hover {
   line-height: 1.7;
   color: #8d9a7e;
 }
+.card-detail-photo {
+  display: block;
+  width: 100%;
+  max-height: 145px;
+  margin-top: 12px;
+  border-radius: 9px;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
 .card-detail small {
   font-size: 9px;
   line-height: 1.6;

@@ -42,7 +42,7 @@ DTSTAMP:20261001T120000Z
 SEQUENCE:0
 DTSTART;TZID=America/Los_Angeles:20261102T073000
 DTEND;TZID=America/Los_Angeles:20261102T083000
-SUMMARY:Morning Gym Session
+SUMMARY:Morning Yoga Flow
 CATEGORIES:FITNESS
 DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
  ut in the sample calendar\; completion is not assumed.

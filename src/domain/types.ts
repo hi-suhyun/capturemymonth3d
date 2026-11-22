@@ -8,6 +8,17 @@ export type Category =
   | "hackathon"
   | "anniversary"
   | "other";
+export type SceneAction =
+  | "reading"
+  | "writing"
+  | "waving"
+  | "stretching"
+  | "jogging"
+  | "lifting"
+  | "yoga"
+  | "typing"
+  | "celebrating"
+  | "looking";
 export type CollectionKind = "travel" | "achievement" | "connection";
 export interface CalendarEvent {
   id: string;
@@ -42,7 +53,7 @@ export interface Chapter {
   end: number;
   arrival: number;
   pathPosition: number;
-  action: string;
+  action: SceneAction;
 }
 export interface Journey {
   duration: number;
@@ -58,12 +69,19 @@ export interface MemoryCard {
   date: string;
   description: string;
   eventIds: string[];
+  photo?: string;
   metric: string;
-  scene: "chicago" | "mountain" | "friends";
+  scene:
+    | "chicago"
+    | "mountain"
+    | "friends"
+    | "stargazing"
+    | "hackathon"
+    | "kbbq";
 }
 export const CATEGORY_META: Record<
   Category,
-  { label: string; color: string; action: string }
+  { label: string; color: string; action: SceneAction }
 > = {
   study: { label: "Class", color: "#758d78", action: "reading" },
   assignment: { label: "Assignment", color: "#a49b6c", action: "writing" },

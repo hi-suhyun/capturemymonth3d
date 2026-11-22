@@ -46,6 +46,24 @@ describe("Calendar ingestion and real demo data", () => {
         .map((card) => card.title),
     ).toEqual(["Joshua Tree Stargazing", "Chicago Thanksgiving Trip"]);
     expect(
+      createCollection(m).find((card) => card.title === "Joshua Tree Stargazing"),
+    ).toMatchObject({
+      scene: "stargazing",
+      subtitle: "A night beneath the desert sky",
+      photo: "/photos/joshua-tree.jpg",
+    });
+    expect(
+      createCollection(m).find((card) => card.title === "2026 Cutie Hack")?.scene,
+    ).toBe("hackathon");
+    expect(
+      createCollection(m).find(
+        (card) => card.title === "One-Year Friendship Anniversary Dinner",
+      ),
+    ).toMatchObject({
+      scene: "kbbq",
+      photo: "/photos/friendship-anniversary-dinner.jpg",
+    });
+    expect(
       m.events.find((x) => x.title === "Chicago Thanksgiving Trip"),
     ).toMatchObject({
       day: 25,

@@ -142,6 +142,7 @@ export default function App() {
     [playing, setPlaying] = useState(false),
     [speed, setSpeed] = useState(1),
     [previewDone, setPreviewDone] = useState(false),
+    [cinematicIntro, setCinematicIntro] = useState(false),
     [overview, setOverview] = useState(false),
     [lowQuality, setLowQuality] = useState(false),
     [architecture, setArchitecture] = useState(false),
@@ -160,8 +161,8 @@ export default function App() {
     currentRef = useRef<HTMLDivElement>(null),
     milestoneScrollFrame = useRef<number | undefined>(undefined);
   const journey = useMemo(
-    () => (data ? createJourney(data, mode) : undefined),
-    [data, mode],
+    () => (data ? createJourney(data, mode, { cinematicIntro }) : undefined),
+    [data, mode, cinematicIntro],
   );
   const stats = useMemo(() => (data ? summarize(data) : undefined), [data]);
   const categoryReport = useMemo(
@@ -329,6 +330,7 @@ export default function App() {
       setFilename("demo-november-2026.ics");
       setDemo(true);
       reset();
+      setCinematicIntro(preview);
       if (preview) {
         setMode("full");
         playback.current.playing = true;
@@ -400,6 +402,7 @@ export default function App() {
   }
   function start(preview = false) {
     reset();
+    setCinematicIntro(preview);
     playback.current.playing = true;
     playback.current.preview = preview;
     setPlaying(true);
@@ -1326,6 +1329,14 @@ export default function App() {
                       <span className="eyebrow">FROM YOUR CALENDAR</span>
                       <h3>{card.title}</h3>
                       <p>{card.description}</p>
+                      {card.photo && (
+                        <img
+                          className="card-detail-photo"
+                          src={card.photo}
+                          alt={`Photo from ${card.title}`}
+                          loading="lazy"
+                        />
+                      )}
                       <small>Saved from your {card.date} calendar entry.</small>
                     </div>
                   )}

@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
-import type { Journey } from "../domain/types";
+import type { Journey, SceneAction } from "../domain/types";
 import { pointAt, tangentAt } from "./landscape";
-import { Desk } from "./Props";
+import { Desk, Dumbbell, YogaMat } from "./Props";
 export interface Playback {
   time: number;
   playing: boolean;
@@ -62,7 +62,7 @@ export function LittlePerson({
   color = "#d9994b",
 }: {
   walking?: boolean;
-  action?: string;
+  action?: SceneAction;
   time?: number;
   color?: string;
 }) {
@@ -186,7 +186,9 @@ export function Traveler({
     body = useRef<THREE.Group>(null),
     desk = useRef<THREE.Group>(null),
     arms = useRef<THREE.Group[]>([]),
-    legs = useRef<THREE.Group[]>([]);
+    legs = useRef<THREE.Group[]>([]),
+    dumbbells = useRef<THREE.Group[]>([]),
+    yogaMat = useRef<THREE.Group>(null);
   const smoothAngle = useRef(0);
   useFrame(() => {
     const time = playback.current.time;
@@ -203,22 +205,41 @@ export function Traveler({
         ) * 0.12;
       root.current.rotation.y = smoothAngle.current;
     }
-    const stride = pose.walking ? Math.sin(time * 11) * 0.6 : 0;
+    const jogging = pose.action === "jogging";
+    const lifting = pose.action === "lifting" && !pose.walking;
+    const yoga = pose.action === "yoga" && !pose.walking;
+    const stride =
+      pose.walking || jogging
+        ? Math.sin(time * (jogging ? 9 : 11)) * (jogging ? 0.66 : 0.6)
+        : 0;
     const work =
       ["reading", "writing", "typing"].includes(pose.action) &&
       !pose.walking &&
       time >= 5;
     if (body.current) {
-      body.current.position.y = pose.walking
-        ? Math.abs(Math.sin(time * 11)) * 0.03
+      body.current.position.y = pose.walking || jogging
+        ? Math.abs(Math.sin(time * (jogging ? 9 : 11))) *
+          (jogging ? 0.045 : 0.03)
         : Math.sin(time * 2) * 0.008;
       body.current.rotation.x = work ? -0.08 : 0;
+      body.current.rotation.z = yoga ? Math.sin(time * 1.5) * 0.025 : 0;
     }
+    const lift = 0.9 + Math.sin(time * 3.2) * 0.32;
     arms.current.forEach((a, i) => {
-      if (a) {
-        a.rotation.x = work
-          ? -0.9 + Math.sin(time * 6 + i) * 0.04
-          : pose.action === "celebrating" && !pose.walking
+      if (!a) return;
+      if (work) {
+        a.rotation.x = -0.9 + Math.sin(time * 6 + i) * 0.04;
+        a.rotation.z = 0;
+      } else if (lifting) {
+        a.rotation.x = -0.15;
+        a.rotation.z = (i ? 1 : -1) * lift;
+      } else if (yoga) {
+        a.rotation.x = -0.12;
+        a.rotation.z =
+          (i ? 1 : -1) * (2.55 + Math.sin(time * 1.4) * 0.035);
+      } else {
+        a.rotation.x =
+          pose.action === "celebrating" && !pose.walking
             ? -2.4
             : pose.action === "waving" && !pose.walking && i === 1
               ? -2.1 + Math.sin(time * 6) * 0.25
@@ -229,9 +250,20 @@ export function Traveler({
             : 0;
       }
     });
-    legs.current.forEach((l, i) => {
-      if (l) l.rotation.x = stride * (i ? -1 : 1);
+    dumbbells.current.forEach((weight) => {
+      if (weight) weight.visible = lifting;
     });
+    legs.current.forEach((l, i) => {
+      if (yoga) {
+        l.rotation.x = i === 1 ? -0.08 : 0;
+        l.rotation.z =
+          i === 1 ? 0.5 + Math.sin(time * 1.8) * 0.035 : 0;
+      } else {
+        l.rotation.x = stride * (i ? -1 : 1);
+        l.rotation.z = 0;
+      }
+    });
+    if (yogaMat.current) yogaMat.current.visible = yoga;
     if (desk.current) desk.current.visible = work;
   });
   return (
@@ -299,6 +331,15 @@ export function Traveler({
               <sphereGeometry args={[0.067, 12, 10]} />
               <meshStandardMaterial color="#dcb493" />
             </mesh>
+            <group
+              ref={(el) => {
+                if (el) dumbbells.current[i] = el;
+              }}
+              position={[0, -0.34, 0.07]}
+              visible={false}
+            >
+              <Dumbbell />
+            </group>
           </group>
         ))}
         <RoundedBox
@@ -348,6 +389,9 @@ export function Traveler({
           </RoundedBox>
         </group>
       ))}
+      <group ref={yogaMat} visible={false}>
+        <YogaMat position={[0, 0, 0.04]} />
+      </group>
       <group ref={desk} visible={false}>
         <Desk position={[0, 0, 0.58]} rotation={Math.PI} laptop />
       </group>

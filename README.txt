@@ -30,17 +30,17 @@ FIVE-STEP EXPERIENCE
 3. Make it yours: edit titles/categories, star events, hide records, select full or highlight playback.
 4. Walk your month: overview, camera zoom, traveler, activity animation, chronological sidebar, timeline, speed, and map image export.
 5. Field guide: a monthly category breakdown, Travel, Achievement, and People journals, real 3D miniatures, event details, JSON export, and next-month upload.
-The 10-second preview is an additional pitch shortcut, not a replacement for the full flow.
+The 10-second preview holds the first activity from 6.8 seconds through the end of the shot. Continuing preserves that timeline; a regular replay uses the fast full-month pacing.
 
 SOURCE MAP
 src/domain/types.ts             Shared event, chapter, and collection contracts.
 src/domain/calendar.ts          iCalendar parsing, bounded recurrence, timezone normalization, classification.
 src/domain/calendar.worker.ts   Isolated browser worker entry.
 src/domain/client.ts            Worker lifecycle, timeout, and error handling.
-src/domain/journey.ts           Deterministic chapter timing, stats, collection selection.
+src/domain/journey.ts           Deterministic chapter timing, event-specific action selection, stats, collection selection.
 src/scene/landscape.ts          Island geometry and arc-length traversal route.
-src/scene/Props.tsx             Replaceable procedural environment assets.
-src/scene/Avatar.tsx            Character rig, activity poses, and world placement.
+src/scene/Props.tsx             Reusable procedural 3D asset library for the environment and activities.
+src/scene/Avatar.tsx            Character rig, activity animations, and world placement.
 src/scene/World.tsx             Lighting, camera choreography, static geometry batching, effects.
 src/scene/MemoryMiniature.tsx   Real 3D field-guide card scenes.
 src/App.tsx                    Product flow and English interface.
@@ -67,6 +67,7 @@ The browser session is temporary. Save my field guide exports JSON; it is not cl
 WHAT EXISTS TODAY
 - Real WebGL 3D, not a background image or pre-rendered video.
 - Procedural diorama, live camera travel, character poses, water, light, and fire motion.
+- Event-specific jogging, weightlifting, and yoga animations with reusable procedural props.
 - English five-step product flow and real .ics parsing.
 - Editable mapping from calendar events to animation actions.
 - Three collection types with real 3D card miniatures and source-event IDs.

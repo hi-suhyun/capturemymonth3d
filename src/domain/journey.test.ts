@@ -30,6 +30,40 @@ const month: MonthData = {
 };
 
 describe("journey pacing", () => {
+  it("holds the opening activity through the ten-second pitch preview", () => {
+    const journey = createJourney(month, "full", { cinematicIntro: true });
+    const first = journey.chapters[0];
+    expect(first.start).toBe(5);
+    expect(first.arrival).toBeCloseTo(6.8);
+    expect(first.end).toBeCloseTo(11.5);
+    expect(journey.chapters[1].end - journey.chapters[1].start).toBe(1.5);
+  });
+  it("chooses dedicated exercise animations from event titles", () => {
+    const activity = (id: string, title: string) => ({
+      ...event(id, false),
+      title,
+      category: "fitness" as const,
+    });
+    const journey = createJourney({
+      ...month,
+      events: [
+        activity("lift", "Strength Training"),
+        activity("yoga", "Morning Yoga Flow"),
+        activity("run", "Campus Run"),
+      ],
+    });
+
+    expect(journey.chapters.map(({ action }) => action)).toEqual([
+      "lifting",
+      "yoga",
+      "jogging",
+    ]);
+    for (const chapter of journey.chapters) {
+      expect(chapter.end - chapter.start).toBe(1);
+      expect(chapter.end - chapter.arrival).toBeCloseTo(0.35);
+    }
+  });
+
   it("moves through ordinary and highlighted events at distinct full-journey tempos", () => {
     const chapters = createJourney(month, "full").chapters;
 

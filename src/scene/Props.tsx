@@ -447,3 +447,182 @@ export function Waterfall({
     </group>
   );
 }
+
+export function Dumbbell() {
+  return (
+    <group rotation={[0, 0, Math.PI / 2]} userData={{ asset: "dumbbell" }}>
+      <mesh castShadow>
+        <cylinderGeometry args={[0.028, 0.028, 0.3, 10]} />
+        <meshStandardMaterial
+          color="#b4a58c"
+          metalness={0.45}
+          roughness={0.55}
+        />
+      </mesh>
+      {[-1, 1].map((side) => (
+        <mesh key={side} position={[0, side * 0.16, 0]} castShadow>
+          <cylinderGeometry args={[0.085, 0.085, 0.075, 12]} />
+          <meshStandardMaterial color="#64796c" roughness={0.82} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+export function YogaMat({
+  position = [0, 0, 0],
+}: {
+  position?: [number, number, number];
+}) {
+  return (
+    <group position={position} userData={{ asset: "yoga-mat" }}>
+      <RoundedBox
+        args={[0.66, 0.035, 0.98]}
+        position={[0, 0.025, 0]}
+        radius={0.025}
+        smoothness={3}
+        castShadow
+      >
+        <meshStandardMaterial color="#9aae9b" roughness={0.92} />
+      </RoundedBox>
+      <mesh position={[0, 0.06, -0.43]} rotation={[0, 0, Math.PI / 2]} castShadow>
+        <cylinderGeometry args={[0.052, 0.052, 0.66, 12]} />
+        <meshStandardMaterial color="#879e89" roughness={0.9} />
+      </mesh>
+    </group>
+  );
+}
+
+export function JoshuaTree({
+  position = [0, 0, 0],
+  scale = 1,
+}: {
+  position?: [number, number, number];
+  scale?: number;
+}) {
+  return (
+    <group
+      position={position}
+      scale={scale}
+      userData={{ asset: "joshua-tree" }}
+    >
+      <mesh position={[0, 0.48, 0]} rotation={[0, 0, -0.05]} castShadow>
+        <cylinderGeometry args={[0.075, 0.12, 0.95, 7]} />
+        <meshStandardMaterial color="#76604e" roughness={0.96} />
+      </mesh>
+      <mesh position={[-0.23, 0.83, 0]} rotation={[0, 0, 0.78]} castShadow>
+        <cylinderGeometry args={[0.052, 0.075, 0.58, 7]} />
+        <meshStandardMaterial color="#806a54" roughness={0.95} />
+      </mesh>
+      <mesh position={[-0.43, 1.08, 0]} rotation={[0, 0, 0.08]} castShadow>
+        <cylinderGeometry args={[0.045, 0.055, 0.5, 7]} />
+        <meshStandardMaterial color="#806a54" roughness={0.95} />
+      </mesh>
+      <mesh position={[0.22, 0.9, 0]} rotation={[0, 0, -0.75]} castShadow>
+        <cylinderGeometry args={[0.05, 0.07, 0.55, 7]} />
+        <meshStandardMaterial color="#806a54" roughness={0.95} />
+      </mesh>
+      <mesh position={[0.42, 1.12, 0]} rotation={[0, 0, -0.08]} castShadow>
+        <cylinderGeometry args={[0.042, 0.052, 0.48, 7]} />
+        <meshStandardMaterial color="#806a54" roughness={0.95} />
+      </mesh>
+      {[
+        [-0.43, 1.32, 0],
+        [0, 1.1, 0],
+        [0.42, 1.34, 0],
+      ].map(([x, y, z], index) => (
+        <group key={index} position={[x, y, z]}>
+          {[-1, 0, 1].map((side) => (
+            <mesh
+              key={side}
+              position={[side * 0.055, 0.08, 0]}
+              rotation={[0, 0, side * -0.48]}
+              castShadow
+            >
+              <coneGeometry args={[0.055, 0.22, 5]} />
+              <meshStandardMaterial color="#78826a" roughness={0.92} />
+            </mesh>
+          ))}
+        </group>
+      ))}
+    </group>
+  );
+}
+
+export function KbbqGrill({
+  position = [0, 0, 0],
+  scale = 1,
+}: {
+  position?: [number, number, number];
+  scale?: number;
+}) {
+  return (
+    <group
+      position={position}
+      scale={scale}
+      userData={{ asset: "kbbq-grill" }}
+    >
+      <RoundedBox
+        args={[0.82, 0.1, 0.62]}
+        position={[0, 0.38, 0]}
+        radius={0.06}
+        smoothness={3}
+        castShadow
+      >
+        <meshStandardMaterial color="#80644f" roughness={0.9} />
+      </RoundedBox>
+      {[-1, 1].flatMap((x) =>
+        [-1, 1].map((z) => (
+          <mesh key={`${x}-${z}`} position={[x * 0.3, 0.19, z * 0.2]} castShadow>
+            <cylinderGeometry args={[0.035, 0.045, 0.38, 7]} />
+            <meshStandardMaterial color="#705743" roughness={0.94} />
+          </mesh>
+        )),
+      )}
+      <RoundedBox
+        args={[0.53, 0.07, 0.43]}
+        position={[0, 0.47, 0]}
+        radius={0.08}
+        smoothness={3}
+        castShadow
+      >
+        <meshStandardMaterial
+          color="#454c49"
+          metalness={0.42}
+          roughness={0.62}
+        />
+      </RoundedBox>
+      {[-0.16, -0.08, 0, 0.08, 0.16].map((x) => (
+        <mesh key={x} position={[x, 0.515, 0]} castShadow>
+          <boxGeometry args={[0.018, 0.012, 0.31]} />
+          <meshStandardMaterial color="#b6a78b" metalness={0.3} />
+        </mesh>
+      ))}
+      {[
+        [-0.12, -0.08, -0.07],
+        [0.02, 0.08, 0.1],
+        [0.14, -0.04, 0.03],
+      ].map(([x, rotation, z], index) => (
+        <RoundedBox
+          key={index}
+          args={[0.13, 0.035, 0.07]}
+          position={[x, 0.55, z]}
+          rotation={[0, rotation, 0]}
+          radius={0.025}
+          smoothness={3}
+          castShadow
+        >
+          <meshStandardMaterial color="#b86e52" roughness={0.85} />
+        </RoundedBox>
+      ))}
+      <mesh position={[-0.35, 0.49, 0.02]} rotation={[-Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.1, 0.1, 0.035, 16]} />
+        <meshStandardMaterial color="#eee4ce" />
+      </mesh>
+      <mesh position={[0.35, 0.49, 0.02]} rotation={[-Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.1, 0.1, 0.035, 16]} />
+        <meshStandardMaterial color="#eee4ce" />
+      </mesh>
+    </group>
+  );
+}

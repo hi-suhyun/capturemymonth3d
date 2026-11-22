@@ -4,28 +4,51 @@ import {
   type Journey,
   type MonthData,
   type MemoryCard,
+  type SceneAction,
 } from "./types";
+
+function actionForEvent(event: MonthData["events"][number]): SceneAction {
+  if (event.category === "fitness") {
+    if (/\byoga\b/i.test(event.title)) return "yoga";
+    if (/\b(run(?:ning)?|jog(?:ging)?)\b/i.test(event.title))
+      return "jogging";
+    if (
+      /\b(strength|weight(?:s|lifting)?|gym|lift(?:ing)?)\b/i.test(
+        event.title,
+      )
+    )
+      return "lifting";
+  }
+  return CATEGORY_META[event.category].action;
+}
+
 export function createJourney(
   month: MonthData,
   mode: "full" | "highlights" = "full",
+  options: { cinematicIntro?: boolean } = {},
 ): Journey {
   const visible = month.events.filter((e) => !e.hidden);
   const chosen = mode === "full" ? visible : visible.filter((e) => e.highlight);
   const events = chosen.length ? chosen : visible.slice(0, 12);
   let clock = 5;
-  const chapters = events.map((event) => {
-    const length =
+  const chapters = events.map((event, index) => {
+    const action = actionForEvent(event);
+    const intro = options.cinematicIntro && index === 0;
+    const length = intro ? 6.5 :
       mode === "highlights"
         ? 4.4
         : event.highlight
           ? 1.5
           : 1;
-    const walkDuration =
+    const fitnessAnimation = ["jogging", "lifting", "yoga"].includes(action);
+    const walkDuration = intro ? 1.8 :
       mode === "highlights"
         ? 2.4
         : event.highlight
           ? length * 0.75
-          : length;
+          : fitnessAnimation
+            ? length * 0.65
+            : length;
     const sameDay = events.filter((e) => e.day === event.day);
     const offset =
       sameDay.findIndex((e) => e.id === event.id) / Math.max(1, sameDay.length);
@@ -39,7 +62,7 @@ export function createJourney(
       end: clock + length,
       arrival: clock + walkDuration,
       pathPosition: position,
-      action: CATEGORY_META[event.category].action,
+      action,
     };
     clock += length;
     return chapter;
@@ -124,6 +147,7 @@ export function createCollection(month: MonthData): MemoryCard[] {
         .slice(0, 300) ||
       "A moment recorded in your calendar, preserved in your field guide.",
     eventIds: [event.id],
+    photo: event.photo,
     metric,
     scene,
   });
@@ -131,14 +155,19 @@ export function createCollection(month: MonthData): MemoryCard[] {
     .filter((event) => event.category === "travel")
     .sort((a, b) => a.start.localeCompare(b.start));
   for (const event of travel) {
+    const stargazing = /stargazing|stars/i.test(event.title);
     cards.push(
       toCard(
         event,
         "travel",
-        /joshua tree|national park|camping|hike/i.test(event.title)
-          ? "mountain"
-          : "chicago",
-        "A little further from ordinary",
+        stargazing
+          ? "stargazing"
+          : /joshua tree|national park|camping|hike/i.test(event.title)
+            ? "mountain"
+            : "chicago",
+        stargazing
+          ? "A night beneath the desert sky"
+          : "A little further from ordinary",
         "1 recorded trip",
       ),
     );
@@ -160,11 +189,19 @@ export function createCollection(month: MonthData): MemoryCard[] {
       kind === "achievement"
         ? "A chapter worth keeping"
         : "The people along the way";
+    const cardScene =
+      kind === "achievement" && event.category === "hackathon"
+        ? "hackathon"
+        : kind === "connection" &&
+            (event.category === "anniversary" ||
+              /anniversary|dinner|kbbq/i.test(event.title))
+          ? "kbbq"
+          : scene;
     const metric =
       kind === "achievement"
         ? `${events.filter((e) => e.category === "exam").length} recorded exams`
         : `${options.length} plans together`;
-    cards.push(toCard(event, kind, scene, subtitle, metric));
+    cards.push(toCard(event, kind, cardScene, subtitle, metric));
   }
   return cards;
 }
