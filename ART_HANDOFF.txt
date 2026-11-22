@@ -1,0 +1,43 @@
+CaptureMyMonth3D — next art pass
+
+ART DIRECTION
+A hand-crafted miniature valley. Soft rounded rocks, warm illuminated paths,
+cool water, layered vegetation, gentle snow, small cottages, and a tactile traveler.
+Maintain the tall island silhouette and the original three-quarter overview.
+Winter is the first theme pack, not the product identity.
+
+CURRENT IMPLEMENTATION
+Environment primitives and the character rig are authored in TypeScript/Three.js.
+The browser renders actual geometry. No external paid artwork is required.
+The scene's route and the calendar engine are independent of individual prop meshes.
+
+BLENDER DELIVERABLES TO ADD
+1. valley.glb — modular terrain chunks and static landmarks.
+2. traveler.glb — one rig with idle, walk, run, read, write, type, stretch, wave, celebrate clips.
+3. study.glb, cafe.glb, campfire.glb, travel.glb — small action-stage prop sets.
+4. winter-theme.json — palette, light settings, decorations, and environment choice.
+5. three card miniatures — travel, achievement, and connections.
+
+EXPORT CONTRACT
+Use glTF/GLB, Y-up, meters. Apply transforms. Place the character's origin at its feet.
+Keep the walk/run clips in place; the journey engine owns route movement.
+Name interaction sockets consistently: activity_origin, character_anchor,
+camera_target, prop_table, companion_left, companion_right.
+Keep static lightmap/AO assets distinct from dynamic character lighting.
+Blender-only procedural shader graphs must be baked or recreated for the web.
+Keep scene generations versioned so stored journey positions remain reproducible.
+
+TEN-SECOND SHOT
+0.0–2.1: full diorama; warm path establishes the route.
+2.1–5.0: ease into the traveler at the first milestone.
+5.0–6.8: walk a few steps to the first activity.
+6.8–10.0: study/write gesture; sidebar highlights Nov 1, Weekly Study Review.
+The full journey continues from the same clock after the preview.
+
+QUALITY GATES
+- No foot sliding or floating on the path.
+- Rounded silhouettes remain appealing at both overview and interaction scale.
+- The traveler, activity prop, and current milestone can be read in one glance.
+- Lights glow without washing out the entire road.
+- Separate performance measurements for desktop and target mobile devices.
+- Preserve an overview framing where no part of the island is cut off.

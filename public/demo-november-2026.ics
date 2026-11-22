@@ -1,0 +1,1106 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CaptureMyMonth3D//November 2026 Demo//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:November 2026 - Student Life Demo
+X-WR-TIMEZONE:America/Los_Angeles
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+DTSTART:20070311T020000
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20071104T020000
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:november-2026-001@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261101T170000
+DTEND;TZID=America/Los_Angeles:20261101T181500
+SUMMARY:Weekly Study Review
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Organize notes an
+ d plan the next study week.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-002@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261102T073000
+DTEND;TZID=America/Los_Angeles:20261102T083000
+SUMMARY:Morning Gym Session
+CATEGORIES:FITNESS
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
+ ut in the sample calendar\; completion is not assumed.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-003@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261102T100000
+DTEND;TZID=America/Los_Angeles:20261102T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-004@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261102T130000
+DTEND;TZID=America/Los_Angeles:20261102T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-005@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261102T183000
+DTEND;TZID=America/Los_Angeles:20261102T201500
+SUMMARY:Data Structures Problem Set
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Work through this
+  week's programming assignment.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-006@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261103T090000
+DTEND;TZID=America/Los_Angeles:20261103T101500
+SUMMARY:Introduction to Statistics
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Probability\, dis
+ tributions\, and applications.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-007@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261103T120000
+DTEND;TZID=America/Los_Angeles:20261103T131500
+SUMMARY:Human-Computer Interaction
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Interaction desig
+ n and user research.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-008@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261103T170000
+DTEND;TZID=America/Los_Angeles:20261103T181500
+SUMMARY:Statistics Lab Worksheet
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Complete the lab 
+ worksheet and check calculations.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-009@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261104T100000
+DTEND;TZID=America/Los_Angeles:20261104T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-010@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261104T130000
+DTEND;TZID=America/Los_Angeles:20261104T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-011@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261104T183000
+DTEND;TZID=America/Los_Angeles:20261104T200000
+SUMMARY:Calculus Practice Problems
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Practice problems
+  for the next exam.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-012@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261104T203000
+DTEND;TZID=America/Los_Angeles:20261104T220000
+SUMMARY:KBBQ Night with Friends
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Share Korean BBQ 
+ after a study day.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Alex\,Jordan
+X-CMM-PHOTO:/photos/kbbq-night.jpg
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-013@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261105T090000
+DTEND;TZID=America/Los_Angeles:20261105T101500
+SUMMARY:Introduction to Statistics
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Probability\, dis
+ tributions\, and applications.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-014@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261105T120000
+DTEND;TZID=America/Los_Angeles:20261105T131500
+SUMMARY:Human-Computer Interaction
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Interaction desig
+ n and user research.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-015@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261105T150000
+DTEND;TZID=America/Los_Angeles:20261105T163000
+SUMMARY:Data Structures Midterm
+CATEGORIES:EXAM
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Scheduled exam in
+  the fictional sample calendar. Attendance\, score\, and completion are no
+ t inferred.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:achievement
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-016@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261105T183000
+DTEND;TZID=America/Los_Angeles:20261105T200000
+SUMMARY:HCI Design Assignment
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Refine a user flo
+ w and prepare a short design critique.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-017@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261106T073000
+DTEND;TZID=America/Los_Angeles:20261106T083000
+SUMMARY:Strength Training
+CATEGORIES:FITNESS
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
+ ut in the sample calendar\; completion is not assumed.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-018@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261106T110000
+DTEND;TZID=America/Los_Angeles:20261106T123000
+SUMMARY:Computer Systems Seminar
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Systems concepts 
+ and weekly discussion.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-019@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261106T150000
+DTEND;TZID=America/Los_Angeles:20261106T161500
+SUMMARY:Computer Systems Lab Report
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Write up the week
+ ly lab findings.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-020@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261107T110000
+DTEND;TZID=America/Los_Angeles:20261107T123000
+SUMMARY:Coffee and Catch-up
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Coffee\, conversa
+ tion\, and a relaxed weekend morning.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Sam
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-021@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261108T130000
+DTEND;TZID=America/Los_Angeles:20261108T150000
+SUMMARY:Downtown Riverside Walk
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Explore downtown 
+ Riverside and find a snack.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Alex\,Maya
+X-CMM-PHOTO:/photos/riverside-walk.jpg
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-022@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261108T170000
+DTEND;TZID=America/Los_Angeles:20261108T181500
+SUMMARY:Weekly Study Review
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Organize notes an
+ d plan the next study week.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-023@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261109T073000
+DTEND;TZID=America/Los_Angeles:20261109T083000
+SUMMARY:Campus Run
+CATEGORIES:FITNESS
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
+ ut in the sample calendar\; completion is not assumed.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-024@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261109T100000
+DTEND;TZID=America/Los_Angeles:20261109T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-025@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261109T130000
+DTEND;TZID=America/Los_Angeles:20261109T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-026@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261109T183000
+DTEND;TZID=America/Los_Angeles:20261109T201500
+SUMMARY:Data Structures Problem Set
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Work through this
+  week's programming assignment.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-027@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261110T090000
+DTEND;TZID=America/Los_Angeles:20261110T101500
+SUMMARY:Introduction to Statistics
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Probability\, dis
+ tributions\, and applications.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-028@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261110T120000
+DTEND;TZID=America/Los_Angeles:20261110T131500
+SUMMARY:Human-Computer Interaction
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Interaction desig
+ n and user research.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-029@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261110T143000
+DTEND;TZID=America/Los_Angeles:20261110T160000
+SUMMARY:Calculus II Exam
+CATEGORIES:EXAM
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Scheduled exam in
+  the fictional sample calendar. Attendance\, score\, and completion are no
+ t inferred.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:achievement
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-030@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261110T170000
+DTEND;TZID=America/Los_Angeles:20261110T181500
+SUMMARY:Statistics Lab Worksheet
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Complete the lab 
+ worksheet and check calculations.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-031@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261111T100000
+DTEND;TZID=America/Los_Angeles:20261111T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-032@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261111T130000
+DTEND;TZID=America/Los_Angeles:20261111T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-033@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261111T183000
+DTEND;TZID=America/Los_Angeles:20261111T200000
+SUMMARY:Calculus Practice Problems
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Practice problems
+  for the next exam.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-034@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261112T073000
+DTEND;TZID=America/Los_Angeles:20261112T083000
+SUMMARY:Morning Gym Session
+CATEGORIES:FITNESS
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
+ ut in the sample calendar\; completion is not assumed.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-035@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261112T090000
+DTEND;TZID=America/Los_Angeles:20261112T101500
+SUMMARY:Introduction to Statistics
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Probability\, dis
+ tributions\, and applications.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-036@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261112T120000
+DTEND;TZID=America/Los_Angeles:20261112T131500
+SUMMARY:Human-Computer Interaction
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Interaction desig
+ n and user research.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-037@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261112T183000
+DTEND;TZID=America/Los_Angeles:20261112T200000
+SUMMARY:HCI Design Assignment
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Refine a user flo
+ w and prepare a short design critique.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-038@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261113T110000
+DTEND;TZID=America/Los_Angeles:20261113T123000
+SUMMARY:Computer Systems Seminar
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Systems concepts 
+ and weekly discussion.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-039@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261113T140000
+DTEND;TZID=America/Los_Angeles:20261113T153000
+SUMMARY:HCI Written Exam
+CATEGORIES:EXAM
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Scheduled exam in
+  the fictional sample calendar. Attendance\, score\, and completion are no
+ t inferred.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:achievement
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-040@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261113T170000
+DTEND;TZID=America/Los_Angeles:20261113T181500
+SUMMARY:Computer Systems Lab Report
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Write up the week
+ ly lab findings.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-041@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261113T200000
+DTEND;TZID=America/Los_Angeles:20261113T220000
+SUMMARY:Movie Night with Friends
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Unwind after a we
+ ek of classes and an exam.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Jordan\,Sam
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-042@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261123
+SUMMARY:2026 Cutie Hack
+CATEGORIES:HACKATHON
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. One two-day hacka
+ thon with a student team. Build\, prototype\, and present a small project.
+  Participation is scheduled\; awards are not inferred.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:achievement
+X-CMM-PEOPLE:Alex\,Jordan
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-043@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261116T100000
+DTEND;TZID=America/Los_Angeles:20261116T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-044@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261116T130000
+DTEND;TZID=America/Los_Angeles:20261116T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-045@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261116T183000
+DTEND;TZID=America/Los_Angeles:20261116T201500
+SUMMARY:Data Structures Problem Set
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Work through this
+  week's programming assignment.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-046@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261117T070000
+DTEND;TZID=America/Los_Angeles:20261117T080000
+SUMMARY:Strength Training
+CATEGORIES:FITNESS
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
+ ut in the sample calendar\; completion is not assumed.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-047@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261117T090000
+DTEND;TZID=America/Los_Angeles:20261117T101500
+SUMMARY:Introduction to Statistics
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Probability\, dis
+ tributions\, and applications.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-048@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261117T120000
+DTEND;TZID=America/Los_Angeles:20261117T131500
+SUMMARY:Human-Computer Interaction
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Interaction desig
+ n and user research.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-049@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261117T170000
+DTEND;TZID=America/Los_Angeles:20261117T181500
+SUMMARY:Statistics Lab Worksheet
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Complete the lab 
+ worksheet and check calculations.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-050@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261118T100000
+DTEND;TZID=America/Los_Angeles:20261118T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-051@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261118T130000
+DTEND;TZID=America/Los_Angeles:20261118T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-052@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261118T183000
+DTEND;TZID=America/Los_Angeles:20261118T200000
+SUMMARY:Calculus Practice Problems
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Practice problems
+  for the next exam.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-053@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261119T090000
+DTEND;TZID=America/Los_Angeles:20261119T101500
+SUMMARY:Introduction to Statistics
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Probability\, dis
+ tributions\, and applications.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-054@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261119T120000
+DTEND;TZID=America/Los_Angeles:20261119T131500
+SUMMARY:Human-Computer Interaction
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Interaction desig
+ n and user research.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-055@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261119T150000
+DTEND;TZID=America/Los_Angeles:20261119T163000
+SUMMARY:Statistics Midterm
+CATEGORIES:EXAM
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Scheduled exam in
+  the fictional sample calendar. Attendance\, score\, and completion are no
+ t inferred.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:achievement
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-056@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261119T183000
+DTEND;TZID=America/Los_Angeles:20261119T200000
+SUMMARY:HCI Design Assignment
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Refine a user flo
+ w and prepare a short design critique.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-057@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261120T110000
+DTEND;TZID=America/Los_Angeles:20261120T123000
+SUMMARY:Computer Systems Seminar
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Systems concepts 
+ and weekly discussion.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-058@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261120T150000
+DTEND;TZID=America/Los_Angeles:20261120T161500
+SUMMARY:Computer Systems Lab Report
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Write up the week
+ ly lab findings.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-059@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261120T180000
+DTEND;TZID=America/Los_Angeles:20261120T210000
+SUMMARY:Ontario Mills Shopping
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. An evening browsi
+ ng shops and getting dinner.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Maya\,Alex
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-060@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261121T090000
+DTEND;TZID=America/Los_Angeles:20261121T100000
+SUMMARY:Weekend Run
+CATEGORIES:FITNESS
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
+ ut in the sample calendar\; completion is not assumed.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-061@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261110T183000
+DTEND;TZID=America/Los_Angeles:20261110T203000
+SUMMARY:One-Year Friendship Anniversary Dinner
+CATEGORIES:ANNIVERSARY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Celebrate one yea
+ r since meeting this group of friends. Fictional personal anniversary chos
+ en for the demo.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Alex\,Maya\,Sam\,Jordan
+X-CMM-PHOTO:/photos/friendship-anniversary-dinner.jpg
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-062@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261122T110000
+DTEND;TZID=America/Los_Angeles:20261122T130000
+SUMMARY:Riverside Brunch
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Brunch and a long
+  catch-up before Thanksgiving week.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Sam\,Jordan
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-063@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261122T170000
+DTEND;TZID=America/Los_Angeles:20261122T181500
+SUMMARY:Weekly Study Review
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Organize notes an
+ d plan the next study week.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-064@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261123T100000
+DTEND;TZID=America/Los_Angeles:20261123T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-065@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261123T130000
+DTEND;TZID=America/Los_Angeles:20261123T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-066@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261123T150000
+DTEND;TZID=America/Los_Angeles:20261123T163000
+SUMMARY:Computer Systems Exam
+CATEGORIES:EXAM
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Scheduled exam in
+  the fictional sample calendar. Attendance\, score\, and completion are no
+ t inferred.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:achievement
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-067@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261123T183000
+DTEND;TZID=America/Los_Angeles:20261123T201500
+SUMMARY:Data Structures Problem Set
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Work through this
+  week's programming assignment.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-068@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261124T090000
+DTEND;TZID=America/Los_Angeles:20261124T101500
+SUMMARY:Introduction to Statistics
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Probability\, dis
+ tributions\, and applications.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-069@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261124T120000
+DTEND;TZID=America/Los_Angeles:20261124T131500
+SUMMARY:Human-Computer Interaction
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Interaction desig
+ n and user research.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-070@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261124T170000
+DTEND;TZID=America/Los_Angeles:20261124T181500
+SUMMARY:Statistics Lab Worksheet
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Complete the lab 
+ worksheet and check calculations.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-071@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261124T190000
+DTEND;TZID=America/Los_Angeles:20261124T213000
+SUMMARY:Friendsgiving Potluck
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A small dinner wi
+ th friends before the Chicago trip.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Alex\,Maya\,Sam\,Jordan
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-072@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261130
+SUMMARY:Chicago Thanksgiving Trip
+CATEGORIES:TRAVEL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. One five-day Chic
+ ago trip: riverwalk\, architecture\, museums\, deep-dish pizza\, and time 
+ with a friend. All-day dates preserve the trip span without timezone ambig
+ uity.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:travel
+X-CMM-PHOTO:/photos/chicago.jpg
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-078@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261107T183000
+DTEND;TZID=America/Los_Angeles:20261107T203000
+SUMMARY:Hanwave Club Ice Skating
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. An evening ice skating with friends from Hanwave.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-PHOTO:/photos/hanwave-ice-skating.jpg
+X-CMM-PEOPLE:Hanwave Club
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-079@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261115T190000
+DTEND;TZID=America/Los_Angeles:20261115T233000
+SUMMARY:Joshua Tree Stargazing
+CATEGORIES:TRAVEL
+LOCATION:Joshua Tree National Park
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A quiet night under the desert stars with friends.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-HIGHLIGHT:TRUE
+X-CMM-COLLECTION:travel
+X-CMM-PHOTO:/photos/joshua-tree.jpg
+X-CMM-PEOPLE:Friends
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-073@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261130T073000
+DTEND;TZID=America/Los_Angeles:20261130T083000
+SUMMARY:Morning Gym Session
+CATEGORIES:FITNESS
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. A scheduled worko
+ ut in the sample calendar\; completion is not assumed.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-074@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261130T100000
+DTEND;TZID=America/Los_Angeles:20261130T111500
+SUMMARY:Data Structures Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Lecture notes\, a
+ lgorithms\, and examples.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-075@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261130T130000
+DTEND;TZID=America/Los_Angeles:20261130T141500
+SUMMARY:Calculus II Lecture
+CATEGORIES:STUDY
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Integration techn
+ iques and problem solving.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-076@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261130T160000
+DTEND;TZID=America/Los_Angeles:20261130T170000
+SUMMARY:Back-from-Chicago Coffee
+CATEGORIES:SOCIAL
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Share trip photos
+  and catch up after class.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-CMM-COLLECTION:connection
+X-CMM-PEOPLE:Maya
+END:VEVENT
+BEGIN:VEVENT
+UID:november-2026-077@capturemymonth3d.demo
+DTSTAMP:20261001T120000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261130T183000
+DTEND;TZID=America/Los_Angeles:20261130T201500
+SUMMARY:Data Structures Problem Set
+CATEGORIES:ASSIGNMENT
+DESCRIPTION:Fictional demo calendar for CaptureMyMonth3D. Work through this
+  week's programming assignment.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
